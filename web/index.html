@@ -69,6 +69,11 @@
         tbody tr:nth-child(even) {
             background-color: rgba(255, 255, 255, 0.05);
         }
+
+        #current-time {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -93,6 +98,9 @@
                 </tbody>
             </table>
         </div>
+        <div id="current-time">
+            🔔: <span id="time"></span>
+        </div>
     </div>
 
     <!-- Įtraukti reikalingus JavaScript bibliotekas -->
@@ -101,6 +109,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/eel.js"></script>
     <script src="script.js"></script>
+    <script>
+        function updateTime() {
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
 
+            document.getElementById("time").innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
